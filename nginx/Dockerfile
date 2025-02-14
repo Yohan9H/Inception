@@ -11,4 +11,4 @@ COPY ./nginx.conf /etc/nginx/nginx.conf
 RUN mkdir -p /var/www/wordpress &&\
     chown -R www-data:www-data /var/www/wordpress
 
-CMD ["nginx", "-g", "daemon off;"]
+CMD [ "nginx", "-g", "daemon off;" ]
