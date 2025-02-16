@@ -6,19 +6,19 @@ all: up
 up: build
 	@mkdir -p $(WP_DATA)
 	@mkdir -p $(DB_DATA)
-	docker-compose -f ./docker-compose.yml ip -d
+	docker compose -f srcs/docker-compose.yml up -d
 
 down:
-	docker-compose -f ./docker-compose.yml up -d
+	docker compose -f srcs/docker-compose.yml up down
 
 stop:
-	docker-compose -f ./docker-compose.yml stop
+	docker compose -f srcs/docker-compose.yml stop
 
 start:
-	docker-compose -f ./docker-compose.yml start
+	docker compose -f srcs/docker-compose.yml start
 
 build:
-	docker-compose -f./docker-compose.yml build
+	docker compose -f srcs/docker-compose.yml build
 
 clean:
 	@docker stop $$(docker ps -qa) || true
@@ -32,6 +32,7 @@ clean:
 re: clean up
 
 prune: clean
-	@ocker system prune -a --volumes -f
+	@docker system prune -a --volumes -f
 
-.PHONY all up down stop start build clean re prune
+
+.PHONY: up down stop start build clean re prune

@@ -3,8 +3,8 @@ FROM debian:bullseye-slim
 RUN apt-get update && apt-get upgrade -y &&\
     apt-get install -y curl php php7.4-fpm php-mysql mariadb-client
 
-COPY ./wp_conf.sh /
+COPY conf/wp_conf.sh /
 
 RUN chmod +x wp_conf.sh
 
-ENTRYPOINT [ "./wp_conf.sh" ]
+ENTRYPOINT [ "conf/wp_conf.sh" ]
