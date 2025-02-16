@@ -33,3 +33,5 @@ re: clean up
 
 prune: clean
 	@ocker system prune -a --volumes -f
+
+.PHONY all up down stop start build clean re prune
