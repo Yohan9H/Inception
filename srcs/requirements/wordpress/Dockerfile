@@ -7,4 +7,4 @@ COPY conf/wp_conf.sh /
 
 RUN chmod +x wp_conf.sh
 
-ENTRYPOINT [ "conf/wp_conf.sh" ]
+ENTRYPOINT [ "/wp_conf.sh" ]
