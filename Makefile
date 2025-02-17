@@ -1,11 +1,11 @@
-WP_DATA = /home/data/wordpress
-DB_DATA = /home/data/mariadb
+WP_DATA = /home/yohurteb/data/wordpress
+DB_DATA = /home/yohurteb/data/mariadb
 
 all: up
 
 up: build
-	@mkdir -p $(WP_DATA)
-	@mkdir -p $(DB_DATA)
+	@sudo mkdir -p $(WP_DATA)
+	@sudo mkdir -p $(DB_DATA)
 	docker compose -f srcs/docker-compose.yml up -d
 
 down:
@@ -26,8 +26,8 @@ clean:
 	@docker rmi -f $$(docker images -qa) || true
 	@docker volume rm $$(docker volume ls -q) || true
 	@docker network rm $$(docker network ls -q) || true
-	@rm -rf $(WP_DATA) || true
-	@rm -rf $(DB_DATA) || true
+	@sudo rm -rf $(WP_DATA) || true
+	@sudo rm -rf $(DB_DATA) || true
 
 re: clean up
 
