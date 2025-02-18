@@ -16,8 +16,14 @@ wp --allow-root core config \
    --dbname="$MYSQL_DB" \
    --dbuser="$MYSQL_USER" \
    --dbpass="$MYSQL_PASSWORD" \
-   --dbhost=mariadb:3306 \
-   --path='/var/www/wordpress'
+   --dbhost=mariadb:3306 
+
+wp config set WP_DEBUG true --raw --allow-root
+
+until wp db check --allow-root; do
+  echo "Waiting for database..."
+  sleep 3
+done
 
 wp --allow-root core install \
    --url="$DOMAIN_NAME" \
